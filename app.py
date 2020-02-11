@@ -1,18 +1,3 @@
-# import flask
-# import os
-
-# app = flask.Flask(__name__)
-
-# @app.route('/')  
-# def index(): 
-#     return flask.render_template("index.html")
-
-# app.run(
-#     port=int(os.getenv('PORT', 8080)),
-#     host=os.getenv('IP', '0.0.0.0'),
-#     debug=True
-# )
-
 import flask
 import os
 import requests
@@ -25,8 +10,8 @@ app = flask.Flask(__name__)
 
 
 @app.route('/') 
+#TWITTER API SET UP
 def index(): 
-    #Set Up Twitter API
     twitter_url = "https://api.twitter.com/1.1/search/tweets.json?q=burger"
     random_tweet = random.randint(0,14)
     oauth = requests_oauthlib.OAuth1(
@@ -43,16 +28,36 @@ def index():
 
     #Set Up Spoontacular
     #basic information
-    # spoonacular_api = "https://api.spoonacular.com/recipes/search?query=cheese&number=2"
+    
     # my_headers = {"Authorization": "Bearer 9Z1vNErMoWax7Ly0N4_lofj35lnP2NOgDVde0C0h8M5HO0sh09sggU0rXwhDFOQU"}
         
     # response = requests.get(spoonacular_api)
     # json_body = response.json()
     # print(json_body["results"][0]["title"])
-
-
-    return flask.render_template("index.html", tweets_about_burgers= tweets_about_burgers)
-    # return flask.render_template("index.html")
     
+    #SPOONTACULAR API SET UP
+    # playlist = random.randint(0,8)
+    spoonacular_url = "https://api.spoonacular.com/recipes/search?query=burgers&apiKey=4cc34612813a4bafa176a17b31e1c6e1"
+    # spoonacular_url = "https://api.spoonacular.com/recipes/search?query=burger&number=1"
+    response = requests.get(spoonacular_url)
+    json_body = response.json()
+    
+    tweets = random.randint(0,8)
+    #recipe name 
+    recipe_title = json_body["response"][tweets]["title"]
+    #recipe servings/preptime
+    servings_preptime = json_body["response"][tweets]["servings_and_preptime"]
+    #recipe recipe image
+    recipe_image = json_body["response"][tweets]["image"]
+    #ingredients list 
+    recipe_ingredients = json_body["response"][tweets]["ingredients"]
+    #recipe link 
+    recipe_link = json_body["response"][tweets]["link"]
+    
+    
+    return flask.render_template("index.html", recipe_title = recipe_title, servings_preptime= servings_preptime, recipe_image = recipe_image,recipe_ingredients= recipe_ingredients, recipe_link= recipe_link, tweets_about_burgers= tweets_about_burgers)
+
+
+    # return flask.render_template("index.html", tweets_about_burgers= tweets_about_burgers)
     
 app.run(port=int(os.getenv('PORT', 8080)), host=os.getenv('IP', '0.0.0.0'))
