@@ -44,7 +44,7 @@ def index():
     
     # tweets = random.randint(0,8)
     #recipe name 
-    recipe_title = json_body["response"][random_tweet]["title"]
+    recipe_title = json_body["results"][random_tweet]["title"]
     #recipe servings/preptime
     # servings_preptime = json_body["response"][tweets]["servings_and_preptime"]
     # #recipe recipe image
