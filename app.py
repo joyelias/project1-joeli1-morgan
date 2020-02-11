@@ -27,7 +27,7 @@ app = flask.Flask(__name__)
 @app.route('/') 
 def index(): 
     #Set Up Twitter API
-    twitter_url = "https://api.twitter.com/1.1/search/tweets.json?q=Beyonce"
+    twitter_url = "https://api.twitter.com/1.1/search/tweets.json?q=burger"
     random_tweet = random.randint(0,14)
     oauth = requests_oauthlib.OAuth1(
         "1g57GGgJ7CBOPpGooj9MUKYFk", 
@@ -37,7 +37,7 @@ def index():
     )
     response = requests.get(twitter_url, auth=oauth)
     json_body = response.json()
-    tweets_about_beyonce = json_body['statuses'][random_tweet]['text']
+    tweets_about_burgers = json_body['statuses'][random_tweet]['text']
     print(response.json())
     
 
@@ -51,7 +51,7 @@ def index():
     # print(json_body["results"][0]["title"])
 
 
-    return flask.render_template("index.html", tweets_about_beyonce= tweets_about_beyonce)
+    return flask.render_template("index.html", tweets_about_burgers= tweets_about_burgers)
     # return flask.render_template("index.html")
     
     
