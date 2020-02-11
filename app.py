@@ -42,20 +42,21 @@ def index():
     response = requests.get(spoonacular_url)
     json_body = response.json()
     
-    tweets = random.randint(0,8)
+    # tweets = random.randint(0,8)
     #recipe name 
-    recipe_title = json_body["response"][tweets]["title"]
+    recipe_title = json_body["response"][random_tweet]["title"]
     #recipe servings/preptime
-    servings_preptime = json_body["response"][tweets]["servings_and_preptime"]
-    #recipe recipe image
-    recipe_image = json_body["response"][tweets]["image"]
-    #ingredients list 
-    recipe_ingredients = json_body["response"][tweets]["ingredients"]
-    #recipe link 
-    recipe_link = json_body["response"][tweets]["link"]
+    # servings_preptime = json_body["response"][tweets]["servings_and_preptime"]
+    # #recipe recipe image
+    # recipe_image = json_body["response"][tweets]["image"]
+    # #ingredients list 
+    # recipe_ingredients = json_body["response"][tweets]["ingredients"]
+    # #recipe link 
+    # recipe_link = json_body["response"][tweets]["link"]
     
     
-    return flask.render_template("index.html", recipe_title = recipe_title, servings_preptime= servings_preptime, recipe_image = recipe_image,recipe_ingredients= recipe_ingredients, recipe_link= recipe_link, tweets_about_burgers= tweets_about_burgers)
+    # return flask.render_template("index.html", recipe_title = recipe_title, servings_preptime= servings_preptime, recipe_image = recipe_image,recipe_ingredients= recipe_ingredients, recipe_link= recipe_link, tweets_about_burgers= tweets_about_burgers)
+    return flask.render_template("index.html", recipe_title = recipe_title, tweets_about_burgers= tweets_about_burgers)
 
 
     # return flask.render_template("index.html", tweets_about_burgers= tweets_about_burgers)
