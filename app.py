@@ -13,7 +13,7 @@ app = flask.Flask(__name__)
 #TWITTER API SET UP
 def index(): 
     twitter_url = "https://api.twitter.com/1.1/search/tweets.json?q=burger"
-    random_tweet = random.randint(0,14)
+    random_tweet = random.randint(1,14)
     oauth = requests_oauthlib.OAuth1(
         "1g57GGgJ7CBOPpGooj9MUKYFk", 
         "C9aFUfRIT1Ad0nB9DN4N0Cn0iQ114kXn2t8dM72NGk0ZH1eoiz",
@@ -48,7 +48,7 @@ def index():
     #recipe servings/preptime
     # servings_preptime = json_body["results"][random_tweet]["servings_and_preptime"]
     # #recipe recipe image
-    recipe_image = json_body["results"][random_tweet]["image"]
+    recipe_image = json_body["results"]["image"]
     # #ingredients list 
     # recipe_ingredients = json_body["results"][random_tweet]["ingredients"]
     # #recipe link 
