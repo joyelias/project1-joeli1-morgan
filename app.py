@@ -51,8 +51,8 @@ def index():
     # print(json_body["results"][0]["title"])
 
 
-    # return flask.render_template("index.html", song = song, pic= pic, artist = artist, tweets_about_beyonce= tweets_about_beyonce)
-    return flask.render_template("index.html")
+    return flask.render_template("index.html", tweets_about_beyonce= tweets_about_beyonce)
+    # return flask.render_template("index.html")
     
     
 app.run(port=int(os.getenv('PORT', 8080)), host=os.getenv('IP', '0.0.0.0'))
