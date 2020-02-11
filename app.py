@@ -46,9 +46,9 @@ def index():
     #recipe name 
     recipe_title = json_body["results"][random_tweet]["title"]
     #recipe servings/preptime
-    # servings_preptime = json_body["results"][random_tweet]["servings_and_preptime"]
+    servings_amount = json_body["results"][random_tweet]["servings"]
     # #recipe recipe image
-    recipe_image = json_body["results"]["image"]
+    # recipe_image = json_body["results"]["image"]
     # #ingredients list 
     # recipe_ingredients = json_body["results"][random_tweet]["ingredients"]
     # #recipe link 
