@@ -56,7 +56,7 @@ def index():
     
     
     # return flask.render_template("index.html", recipe_title = recipe_title, servings_preptime= servings_preptime, recipe_image = recipe_image,recipe_ingredients= recipe_ingredients, recipe_link= recipe_link, tweets_about_burgers= tweets_about_burgers)
-    return flask.render_template("index.html", recipe_title = recipe_title, tweets_about_burgers= tweets_about_burgers)
+    return flask.render_template("index.html", recipe_title = recipe_title, serving_size= serving_size, tweets_about_burgers= tweets_about_burgers)
 
 
     # return flask.render_template("index.html", tweets_about_burgers= tweets_about_burgers)
