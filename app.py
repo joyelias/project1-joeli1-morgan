@@ -37,18 +37,18 @@ def index():
     )
     response = requests.get(twitter_url, auth=oauth)
     json_body = response.json()
-    # tweets_about_beyonce = json_body['statuses'][random_tweet]['text']
-    # print(response.json())
+    tweets_about_beyonce = json_body['statuses'][random_tweet]['text']
+    print(response.json())
     
 
     #Set Up Spoontacular
     #basic information
-    spoonacular_api = "https://api.spoonacular.com/recipes/search?query=cheese&number=2"
-    my_headers = {"Authorization": "Bearer 9Z1vNErMoWax7Ly0N4_lofj35lnP2NOgDVde0C0h8M5HO0sh09sggU0rXwhDFOQU"}
+    # spoonacular_api = "https://api.spoonacular.com/recipes/search?query=cheese&number=2"
+    # my_headers = {"Authorization": "Bearer 9Z1vNErMoWax7Ly0N4_lofj35lnP2NOgDVde0C0h8M5HO0sh09sggU0rXwhDFOQU"}
         
-    response = requests.get(spoonacular_api)
-    json_body = response.json()
-    print(json_body["results"][0]["title"])
+    # response = requests.get(spoonacular_api)
+    # json_body = response.json()
+    # print(json_body["results"][0]["title"])
 
 
     # return flask.render_template("index.html", song = song, pic= pic, artist = artist, tweets_about_beyonce= tweets_about_beyonce)
