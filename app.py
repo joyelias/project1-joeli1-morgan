@@ -60,21 +60,23 @@ def index():
     
     #ingredients info
     # burger_ingredients = https://api.spoonacular.com/recipes/1003464/ingredientWidget.json
-    recipe_ingredients = json_body["results"][random_tweet]["id"]
-    burger_info = "https://api.spoonacular.com/recipes/{}/information?includeNutrition=false&apiKey=4cc34612813a4bafa176a17b31e1c6e1".format(recipe_ingredients)
+    recipe_id = json_body["results"][random_tweet]["id"]
+    burger_info = "https://api.spoonacular.com/recipes/{}/information?includeNutrition=false&apiKey=4cc34612813a4bafa176a17b31e1c6e1".format(recipe_id)
     response_2 = requests.get(burger_info)
     json_body_2 = response_2.json()
+    burger_source_url = json_body_2["sourceUrl"]
     burger_pic = json_body_2["image"]
-    # image = str(json_body["recipes"][0]['image'])
+ 
     
     # return flask.render_template("index.html", recipe_title = recipe_title, servings_preptime= servings_preptime, recipe_image = recipe_image,recipe_ingredients= recipe_ingredients, recipe_link= recipe_link, tweets_about_burgers= tweets_about_burgers)
-    # return flask.render_template("index.html", recipe_title = recipe_title, burger_pic=burger_pic,
-    # serving_size= serving_size, prep_time= prep_time, 
-    # recipe_ingredients = recipe_ingredients,
-    # recipe_image = recipe_image,
-    # tweets_about_burgers= tweets_about_burgers)
+    return flask.render_template("index.html", recipe_title = recipe_title, burger_pic=burger_pic,
+    serving_size= serving_size, prep_time= prep_time, 
+    recipe_id = recipe_id,
+    recipe_image = recipe_image,
+    burger_source_url = burger_source_url,
+    tweets_about_burgers= tweets_about_burgers)
 
 
-    return flask.render_template("index.html", burger_pic=burger_pic)
+    # return flask.render_template("index.html", burger_pic=burger_pic)
     
 app.run(port=int(os.getenv('PORT', 8080)), host=os.getenv('IP', '0.0.0.0'))
