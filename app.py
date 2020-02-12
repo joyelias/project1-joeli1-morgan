@@ -50,7 +50,7 @@ def index():
     # #recipe recipe image
     recipe_image = json_body["results"][random_tweet]["image"]
     # #ingredients list 
-    recipe_ingredients = json_body["results"][random_tweet]["ingredients"]
+    recipe_ingredients = json_body["results"][random_tweet]["id"]
     # #recipe link 
     # recipe_link = json_body["results"][random_tweet]["link"]
     
