@@ -65,12 +65,12 @@ def index():
     response_2 = requests.get(burger_ingredients)
     json_body_2 = response_2.json()
     burger_pic = json_body_2["image"]
+    # image = str(json_body["recipes"][0]['image'])
     
     # return flask.render_template("index.html", recipe_title = recipe_title, servings_preptime= servings_preptime, recipe_image = recipe_image,recipe_ingredients= recipe_ingredients, recipe_link= recipe_link, tweets_about_burgers= tweets_about_burgers)
     return flask.render_template("index.html", recipe_title = recipe_title, burger_pic=burger_pic,
     serving_size= serving_size, prep_time= prep_time, 
     recipe_ingredients = recipe_ingredients,
-    recipe_url = recipe_url,
     recipe_image = recipe_image,
     tweets_about_burgers= tweets_about_burgers)
 
