@@ -13,7 +13,7 @@ app = flask.Flask(__name__)
 #TWITTER API SET UP
 def index(): 
     twitter_url = "https://api.twitter.com/1.1/search/tweets.json?q=burger"
-    random_tweet = random.randint(0,24)
+    random_tweet = random.randint(0,8)
     oauth = requests_oauthlib.OAuth1(
         "1g57GGgJ7CBOPpGooj9MUKYFk", 
         "C9aFUfRIT1Ad0nB9DN4N0Cn0iQ114kXn2t8dM72NGk0ZH1eoiz",
