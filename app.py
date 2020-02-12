@@ -50,13 +50,13 @@ def index():
     # #recipe recipe image
     recipe_image = json_body["results"][random_tweet]["image"]
     # #ingredients list 
-    # recipe_ingredients = json_body["results"][random_tweet]["ingredients"]
+    recipe_ingredients = json_body["results"][random_tweet]["ingredients"]
     # #recipe link 
     # recipe_link = json_body["results"][random_tweet]["link"]
     
     
     # return flask.render_template("index.html", recipe_title = recipe_title, servings_preptime= servings_preptime, recipe_image = recipe_image,recipe_ingredients= recipe_ingredients, recipe_link= recipe_link, tweets_about_burgers= tweets_about_burgers)
-    return flask.render_template("index.html", recipe_title = recipe_title, recipe_image=recipe_image, serving_size= serving_size, tweets_about_burgers= tweets_about_burgers)
+    return flask.render_template("index.html", recipe_title = recipe_title, recipe_image=recipe_image, serving_size= serving_size, recipe_ingredients = recipe_ingredients, tweets_about_burgers= tweets_about_burgers)
 
 
     # return flask.render_template("index.html", tweets_about_burgers= tweets_about_burgers)
