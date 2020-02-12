@@ -13,7 +13,7 @@ app = flask.Flask(__name__)
 #TWITTER API SET UP
 def index(): 
     twitter_url = "https://api.twitter.com/1.1/search/tweets.json?q=burger"
-    random_tweet = random.randint(0,8)
+    random_tweet = random.randint(0,24)
     oauth = requests_oauthlib.OAuth1(
         "1g57GGgJ7CBOPpGooj9MUKYFk", 
         "C9aFUfRIT1Ad0nB9DN4N0Cn0iQ114kXn2t8dM72NGk0ZH1eoiz",
@@ -46,7 +46,7 @@ def index():
     #recipe name 
     recipe_title = json_body["results"][random_tweet]["title"]
     serving_size = json_body["results"][random_tweet]["servings"]
-    recipe_image = json_body['results'][random_tweet]['image']
+    recipe_image = str(json_body['results'][random_tweet]['image'])
     # recipe_image = json_body["results"][random_tweet]["image"]
     # #ingredients list 
     recipe_ingredients = json_body["results"][random_tweet]["id"]
@@ -60,8 +60,9 @@ def index():
     
     #ingredients info
     # burger_ingredients = https://api.spoonacular.com/recipes/1003464/ingredientWidget.json
-    burger_ingredients = "https://api.spoonacular.com/recipes/{}/information?includeNutrition=false&apiKey=4cc34612813a4bafa176a17b31e1c6e1".format(recipe_ingredients)
-    response_2 = requests.get(burger_ingredients)
+    recipe_ingredients = json_body["results"][random_tweet]["id"]
+    burger_info = "https://api.spoonacular.com/recipes/{}/information?includeNutrition=false&apiKey=4cc34612813a4bafa176a17b31e1c6e1".format(recipe_ingredients)
+    response_2 = requests.get(burger_info)
     json_body_2 = response_2.json()
     burger_pic = json_body_2["image"]
     # image = str(json_body["recipes"][0]['image'])
@@ -74,6 +75,6 @@ def index():
     # tweets_about_burgers= tweets_about_burgers)
 
 
-    return flask.render_template("index.html", recipe_image = recipe_image)
+    return flask.render_template("index.html", burger_pic=burger_pic)
     
 app.run(port=int(os.getenv('PORT', 8080)), host=os.getenv('IP', '0.0.0.0'))
