@@ -45,17 +45,16 @@ def index():
     # tweets = random.randint(0,8)
     #recipe name 
     recipe_title = json_body["results"][random_tweet]["title"]
-    #recipe servings/preptime
     serving_size = json_body["results"][random_tweet]["servings"]
-    # #recipe recipe image
-    recipe_image = json_body["results"][random_tweet]["image"]
+    recipe_image = json_body['results'][random_tweet]['image']
+    # recipe_image = json_body["results"][random_tweet]["image"]
     # #ingredients list 
     recipe_ingredients = json_body["results"][random_tweet]["id"]
     # #recipe link 
     # recipe_link = json_body["results"][random_tweet]["link"]
     prep_time = json_body["results"][random_tweet]["readyInMinutes"]
     #sourceurl
-    recipe_url = json_body["sourceUrl"]
+    # recipe_url = json_body["sourceUrl"]
     
     
     
@@ -68,13 +67,13 @@ def index():
     # image = str(json_body["recipes"][0]['image'])
     
     # return flask.render_template("index.html", recipe_title = recipe_title, servings_preptime= servings_preptime, recipe_image = recipe_image,recipe_ingredients= recipe_ingredients, recipe_link= recipe_link, tweets_about_burgers= tweets_about_burgers)
-    return flask.render_template("index.html", recipe_title = recipe_title, burger_pic=burger_pic,
-    serving_size= serving_size, prep_time= prep_time, 
-    recipe_ingredients = recipe_ingredients,
-    recipe_image = recipe_image,
-    tweets_about_burgers= tweets_about_burgers)
+    # return flask.render_template("index.html", recipe_title = recipe_title, burger_pic=burger_pic,
+    # serving_size= serving_size, prep_time= prep_time, 
+    # recipe_ingredients = recipe_ingredients,
+    # recipe_image = recipe_image,
+    # tweets_about_burgers= tweets_about_burgers)
 
 
-    # return flask.render_template("index.html", tweets_about_burgers= tweets_about_burgers)
+    return flask.render_template("index.html", recipe_image = recipe_image)
     
 app.run(port=int(os.getenv('PORT', 8080)), host=os.getenv('IP', '0.0.0.0'))
