@@ -5,11 +5,13 @@
     
     <h1>{{ recipe_title }}</h1>
     <h1><img src= burger_pic /></h1>
+    <h1><img src= "https://spoonacular.com/recipeImages/716429-556x370.jpg"/></h1>
     
-    <center>Serving Size: {{ serving_size }}<center>
-    <center>Recipe Link: {{ burger_source_url }}<center>
-    <center>Ready in Minutes: {{ prep_time }}<center>
-    <center>Ingredients: {{ recipe_ingredients }}<center>
+    <center>This recipe has a serving size of: {{ serving_size }}<center>
+    <center>Here's a link to the recipe: {{ burger_source_url }}<center>
+    <center>This meal should be ready in approximately {{ prep_time }} minutes <center>
+    <center>ID: {{ recipe_id  }}<center>
+    <!--<center>Ingredients: {{ recipe_ingredients }}<center>-->
     <center>{{ tweets_about_burgers }}<center>
     
 
